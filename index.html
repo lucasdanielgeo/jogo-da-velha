@@ -3,82 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jogo-da-Velha</title>
 </head>
 <body>
-    <canvas id="myCanvas" width="300" height="300" style="border:4px solid #c3c3c3"> Your broser does not support the canvas element. </canvas>
-    <script type="text/javascript">
-        var canvas = document.getElementById("myCanvas");
-        if (canvas.getContext) {
-            /** @type {CanvasRenderingContext2D} */
-            var ctx = canvas.getContext("2d");
-            ctx.strokeStyle = "gray";
-
-            ctx.moveTo(100, 20);
-            ctx.lineTo(100, 280);
-
-            ctx.moveTo(200, 20);
-            ctx.lineTo(200, 280);
-
-            ctx.moveTo(20, 100);
-            ctx.lineTo(280, 100);
-
-            ctx.moveTo(280, 200);
-            ctx.lineTo(20, 200);
-
-            ctx.stroke()
-
-            /** @type {CanvasRenderingContext2D} */
-            var ctx2 = canvas.getContext("2d");
-            ctx2.fillStyle = "white";
-            ctx2.strokeStyle ="gray"
-            ctx2.fillRect(25,25,50,50);
-
-            // Circles
-            ctx2.beginPath();
-            ctx2.arc(60, 60, 20, 0, 2 * Math.PI);
-            ctx.lineWidth = 3;
-            ctx2.stroke();
-
-            ctx2.beginPath();
-            ctx2.arc(150, 60, 20, 0, 2 * Math.PI);
-            ctx.lineWidth = 3;
-            ctx2.stroke();
-
-            ctx2.beginPath();
-            ctx2.arc(240, 60, 20, 0, 2 * Math.PI);
-            ctx.lineWidth = 2;
-            ctx2.stroke();
-
-            // Line
-            ctx2.moveTo(20, 60);
-            ctx2.lineTo(280, 60);
-            ctx2.stroke();
-
-            // X simbols
-            ctx2.moveTo(40, 130);
-            ctx2.lineTo(80, 170);
-            ctx2.stroke();
-            ctx2.moveTo(80, 130);
-            ctx2.lineTo(40, 170);
-            ctx2.stroke();
-
-            ctx2.moveTo(130, 130);
-            ctx2.lineTo(170, 170);
-            ctx2.stroke();
-            ctx2.moveTo(130, 170);
-            ctx2.lineTo(170, 130);
-            ctx2.stroke();
-
-            ctx2.moveTo(130, 220);
-            ctx2.lineTo(170, 260);
-            ctx2.stroke();
-            ctx2.moveTo(130, 260);
-            ctx2.lineTo(170, 220);
-            ctx2.stroke();
-
-
-        };    
-    </script>
+    <canvas id="myCanvas" width="500" height="500" style="border:4px solid #c3c3c3"> Your broser does not support the canvas element. </canvas>
+    
+    <script src="app.js"></script>
 </body>
 </html>
