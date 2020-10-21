@@ -1,8 +1,7 @@
 /** @type {CanvasRenderingContext2D} */
 const canvas = document.getElementById("myCanvas");
-var canvasWidth = canvas.width
-var canvasHeight = canvas.height 
-const ctx = document.getElementById('myCanvas').getContext('2d');
+const ctx = canvas.getContext('2d');
+canvas.width= 300; canvas.height = 300
 const gameBoardAreaInputs = []
 
 function gameBoardArea() {
@@ -12,8 +11,7 @@ function gameBoardArea() {
             ctx.save();                
             //ctx.fillStyle = 'rgb(' + (51 * i) + ', ' + (255 - 51 * i) + ', 255, .1 )';
             ctx.fillStyle = 'white'
-            ctx.translate(0 + j * canvasWidth / 3, 0 + i * canvasHeight / 3);
-            ctx.fillRect(0, 0, canvasWidth / 3 - 1, canvasHeight / 3 - 1);
+            ctx.translate(0 + j * canvas.width / 3, 0 + i * canvas.width / 3 - 1, canvas.height / 3 - 1);
             ctx.restore();
             gameBoardAreaInputs.push({j,i})
             array_area = [j, i]
@@ -24,15 +22,15 @@ function gameBoardArea() {
 
 const circles = [
     {
-      x: 180,
-      y: 180,
-      radius: 50,
+      x: canvas.width/3-canvas.width/6,
+      y: canvas.height/3-canvas.height/6,
+      radius: 20,
       color: 'rgb(255,0,0)'
     },
     {
       x: 90,
       y: 90,
-      radius: 50,
+      radius: 20,
       color: 'rgb(0,0,0)'
     }
 ];
@@ -53,17 +51,17 @@ function printGameBoard() {
     let gameBoardStroke = document.getElementById('myCanvas').getContext('2d');
     gameBoardStroke.strokeStyle = "gray";
 
-    gameBoardStroke.moveTo(canvasWidth / 3, canvasHeight * 0.05);
-    gameBoardStroke.lineTo(canvasWidth / 3, canvasHeight * 0.95);
+    gameBoardStroke.moveTo(canvas.width / 3, canvas.height * 0.05);
+    gameBoardStroke.lineTo(canvas.width / 3, canvas.height * 0.95);
 
-    gameBoardStroke.moveTo((canvasWidth / 3) + canvasWidth / 3, canvasHeight * 0.05);
-    gameBoardStroke.lineTo((canvasWidth / 3) + canvasWidth / 3, canvasHeight * 0.95);
+    gameBoardStroke.moveTo((canvas.width / 3) + canvas.width / 3, canvas.height * 0.05);
+    gameBoardStroke.lineTo((canvas.width / 3) + canvas.width / 3, canvas.height * 0.95);
 
-    gameBoardStroke.moveTo(canvasWidth * 0.05, canvasHeight / 3);
-    gameBoardStroke.lineTo(canvasWidth * 0.95, canvasHeight / 3);
+    gameBoardStroke.moveTo(canvas.width * 0.05, canvas.height / 3);
+    gameBoardStroke.lineTo(canvas.width * 0.95, canvas.height / 3);
 
-    gameBoardStroke.moveTo(canvasWidth * 0.95, (canvasHeight / 3) + canvasHeight / 3);
-    gameBoardStroke.lineTo(canvasWidth * 0.05, (canvasHeight / 3) + canvasHeight / 3);
+    gameBoardStroke.moveTo(canvas.width * 0.95, (canvas.height / 3) + canvas.height / 3);
+    gameBoardStroke.lineTo(canvas.width * 0.05, (canvas.height / 3) + canvas.height / 3);
     gameBoardStroke.stroke()
 }
 printGameBoard()
