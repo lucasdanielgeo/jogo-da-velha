@@ -1,50 +1,79 @@
-/** @type {CanvasRenderingContext2D} */
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext('2d');
 canvas.width= 300; canvas.height = 300
 const gameBoardAreaInputs = []
-
-function gameBoardArea() {
-    for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
-            /** @type {CanvasRenderingContext2D} */
-            ctx.save();                
-            //ctx.fillStyle = 'rgb(' + (51 * i) + ', ' + (255 - 51 * i) + ', 255, .1 )';
-            ctx.fillStyle = 'white'
-            ctx.translate(0 + j * canvas.width / 3, 0 + i * canvas.width / 3 - 1, canvas.height / 3 - 1);
-            ctx.restore();
-            gameBoardAreaInputs.push({j,i})
-            array_area = [j, i]
-            console.log(j, i)
-        }
+const marker = {
+    active: false,
+    pos: {
+        x: 0,
+        y: 0
     }
 }
 
-const circles = [
-    {
-      x: canvas.width/3-canvas.width/6,
-      y: canvas.height/3-canvas.height/6,
-      radius: 20,
-      color: 'rgb(255,0,0)'
-    },
-    {
-      x: 90,
-      y: 90,
-      radius: 20,
-      color: 'rgb(0,0,0)'
+function gameBoardArea() {
+    for (var x = 0; x < 3; x++) {
+        for (var y = 0; y < 3; y++) {
+            ctx.save();                
+            ctx.fillStyle = 'white'
+            ctx.translate(0 + y * canvas.width / 3, 0 + x * canvas.width / 3 - 1, canvas.height / 3 - 1);
+            ctx.restore();
+            gameBoardAreaInputs.push({y,x})
+            console.log(y, x)
+        }
     }
-];
+    
+}
 
-circles.forEach(circle => {
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = circle.color;
-    ctx.fill();
-  });
 
-canvas.addEventListener('click', () => {
-    console.log('canvas click')
-})
+function circles() {
+    this.x = x
+    this.y = y
+    this.radius = radius
+    this.stroke = stroke
+    this.startAngle = startAngle
+    this.endAngle =  endAngle   
+}
+
+// circles.forEach(circle => {
+//     ctx.beginPath();
+//     /** @type {CanvasRenderingContext2D} */
+//     ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
+//     ctx.fillStyle = circle.color;
+//     ctx.fill();
+// });
+
+
+canvas.onmousedown = () => {
+    marker.active = true
+}
+
+canvas.onmouseup = () => {
+    marker.active = false
+}
+
+canvas.addEventListener('mousedown', function(event) {
+    var rect = myCanvas.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+    console.log("x: " + x + " y: " + y); 
+}, false);
+
+
+function crosses() {
+    this.x = x
+    this.y = y
+    this.w = w
+    this.h = h
+}
+
+
+
+// canvas.addEventListener('click', () => {
+//     console.log('canvas click', )
+    
+// })
+
+
 gameBoardArea()
 
 function printGameBoard() {
