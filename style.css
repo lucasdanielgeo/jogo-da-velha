@@ -1,5 +1,16 @@
 body {
+    text-align: center;
+    margin: auto;
+    padding: 10px;
     background-color: rgb(228, 8, 8)223, 223);
     font-family: Helvetica, sans-serif;
     align-content: center;
+
+}
+button{
+    /* color: transparent; */
+    /* background-color: transparent;
+    border-color: transparent;
+    cursor: default; */
+    align-content:space-between;
 }
