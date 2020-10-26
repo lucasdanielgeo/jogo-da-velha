@@ -2,13 +2,6 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext('2d');
 canvas.width= 300; canvas.height = 300
 const gameBoardAreaInputs = []
-const marker = {
-    active: false,
-    pos: {
-        x: 0,
-        y: 0
-    }
-}
 
 function gameBoardArea() {
     for (var x = 0; x < 3; x++) {
@@ -17,11 +10,20 @@ function gameBoardArea() {
             ctx.fillStyle = 'white'
             ctx.translate(0 + y * canvas.width / 3, 0 + x * canvas.width / 3 - 1, canvas.height / 3 - 1);
             ctx.restore();
-            gameBoardAreaInputs.push({y,x})
+            b = 0
+            const widthEnd = ctx.canvas.getBoundingClientRect().width
+            const widthInit = ctx.canvas.getBoundingClientRect().width - 1
+            const heightEnd = ctx.canvas.getBoundingClientRect().height
+            const heightInit = ctx.canvas.getBoundingClientRect().height 
+            const h = ctx.height
+            gameBoardAreaInputs.push({y,x, b, widthInit, widthEnd, heightInit, heightEnd})
             console.log(y, x)
         }
     }
-    
+}
+
+function changeButtonState(){
+
 }
 
 
@@ -43,13 +45,13 @@ function circles() {
 // });
 
 
-canvas.onmousedown = () => {
-    marker.active = true
-}
+// canvas.onmousedown = () => {
+//     marker.active = true
+// }
 
-canvas.onmouseup = () => {
-    marker.active = false
-}
+// canvas.onmouseup = () => {
+//     marker.active = false
+// }
 
 canvas.addEventListener('mousedown', function(event) {
     var rect = myCanvas.getBoundingClientRect();
@@ -66,12 +68,20 @@ function crosses() {
     this.h = h
 }
 
+let currentTimePlay = 'crossPlayer'
 
+canvas.addEventListener('click', function(event) {
+    if (currentTimePlay == 'crossPlayer') {
+        currentTimePlay = 'circlePlayer'
+    } else {
+      currentTimePlay = 'crossPlayer'  
+    }
+    console.log(currentTimePlay); 
+    document.getElementById('texto').innerHTML = `<br>Current Player!<br> <b> ${currentTimePlay}`;
 
-// canvas.addEventListener('click', () => {
-//     console.log('canvas click', )
-    
-// })
+}, false);
+
+document.getElementById('texto').innerHTML = `<br>Current Player! <br><b> ${currentTimePlay}`;
 
 
 gameBoardArea()
