@@ -1,9 +1,9 @@
 body {
     text-align: center;
     margin: auto;
-    padding: 10px;
-    background-color: rgb(228, 8, 8)223, 223);
-    font-family: Helvetica, sans-serif;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    font-family: JetBrains Mono, sans-serif;
     align-content: center;
 
 }
