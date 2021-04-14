@@ -2,7 +2,7 @@
 
 Regras de negocio/requisitos funcionais
 
-* sem mamata de framework (nem bootstrap);
+* Sem framework;
 * deve mostrar um tabuleiro com 9 casas;
 * o jogador deve escolher um simbolo, "X" ou "O";
 * a escolha do simbolo "X" define quem inicia o jogo;
